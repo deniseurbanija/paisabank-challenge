@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { User } from './Users.entity';
 
 export enum TransactionType {
   SUS = 'SUS',
@@ -10,15 +11,22 @@ export enum TransactionType {
 export class Transaction {
   @PrimaryGeneratedColumn()
   id: number;
-  @Column()
+
+  @Column({ length: 100 })
   title: string;
-  @Column()
+
+  @Column({ length: 8 })
   amount: string;
+
   @Column({
     type: 'enum',
     enum: TransactionType,
   })
   transactionType: TransactionType;
-  @Column()
+
+  @Column({ length: 8 })
   date: string;
+
+  @ManyToOne(() => User, (user) => user.transactions)
+  user: User;
 }

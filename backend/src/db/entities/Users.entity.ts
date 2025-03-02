@@ -1,17 +1,24 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
 import { Cards } from './Cards.entity';
-import { Transactions } from './Transactions.entity';
+import { Transaction } from './Transactions.entity';
 
 @Entity('users')
 export class User {
   @PrimaryGeneratedColumn()
   id: number;
-  @Column()
+
+  @Column({ length: 50 })
+  name: string;
+
+  @Column({ length: 50 })
   username: string;
-  @Column()
+
+  @Column({ length: 50 })
   password: string;
-  @Column()
+
+  @OneToMany(() => Cards, (card) => card.user)
   cards: Cards[];
-  @Column()
-  transactions: Transactions[];
+
+  @OneToMany(() => Transaction, (transaction) => transaction.user)
+  transactions: Transaction[];
 }
