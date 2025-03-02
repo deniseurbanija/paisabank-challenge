@@ -3,6 +3,9 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { Cards } from './db/entities/Cards.entity';
+import { User } from './db/entities/Users.entity';
+import { Transaction } from './db/entities/Transactions.entity';
 
 @Module({
   imports: [
@@ -20,7 +23,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
         username: configService.get<string>('DB_USERNAME'),
         password: configService.get<string>('DB_PASSWORD'),
         database: configService.get<string>('DB_NAME'),
-        entities: [__dirname + '/../**/*.entity{.ts,.js}'],
+        entities: [Cards, User, Transaction],
         synchronize: true,
       }),
     }),

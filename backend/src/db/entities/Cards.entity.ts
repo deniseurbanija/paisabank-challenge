@@ -15,7 +15,7 @@ export class Cards {
   @Column({ length: 5 }) // e.g. 03/29
   expDate: string;
 
-  @Column({ length: 4 })
+  @Column()
   lastDigits: number;
 
   @Column()
