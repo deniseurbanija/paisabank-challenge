@@ -6,6 +6,9 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { Cards } from './db/entities/Cards.entity';
 import { User } from './db/entities/Users.entity';
 import { Transaction } from './db/entities/Transactions.entity';
+import { AuthModule } from './modules/auth/auth.module';
+import { CardsModule } from './modules/cards/cards.module';
+import { TransactionsModule } from './modules/transactions/transactions.module';
 
 @Module({
   imports: [
@@ -27,6 +30,9 @@ import { Transaction } from './db/entities/Transactions.entity';
         synchronize: true,
       }),
     }),
+    AuthModule,
+    CardsModule,
+    TransactionsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
