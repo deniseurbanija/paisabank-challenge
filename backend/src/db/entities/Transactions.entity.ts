@@ -27,6 +27,9 @@ export class Transaction {
   @Column({ length: 8 })
   date: string;
 
+  @Column()
+  userId: number;
+
   @ManyToOne(() => User, (user) => user.transactions)
   user: User;
 }

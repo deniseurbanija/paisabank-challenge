@@ -14,7 +14,7 @@ export class CardsService {
       const cards = await this.cardsRepository.find();
 
       if (cards.length == 0) {
-        throw new NotFoundException('There are no cards for this user');
+        throw new NotFoundException('The cards list is empty');
       }
 
       return {
