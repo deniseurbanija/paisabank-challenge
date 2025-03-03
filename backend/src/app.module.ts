@@ -3,7 +3,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Cards } from './db/entities/Cards.entity';
+import { Card } from './db/entities/Cards.entity';
 import { User } from './db/entities/Users.entity';
 import { Transaction } from './db/entities/Transactions.entity';
 import { AuthModule } from './modules/auth/auth.module';
@@ -26,7 +26,7 @@ import { TransactionsModule } from './modules/transactions/transactions.module';
         username: configService.get<string>('DB_USERNAME'),
         password: configService.get<string>('DB_PASSWORD'),
         database: configService.get<string>('DB_NAME'),
-        entities: [Cards, User, Transaction],
+        entities: [Card, User, Transaction],
         synchronize: true,
       }),
     }),

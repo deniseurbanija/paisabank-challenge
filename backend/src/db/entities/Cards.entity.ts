@@ -2,7 +2,7 @@ import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { User } from './Users.entity';
 
 @Entity('cards')
-export class Cards {
+export class Card {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -23,6 +23,9 @@ export class Cards {
 
   @Column({ length: 3, default: 'USD' })
   currency: string;
+
+  @Column()
+  userId: number;
 
   @ManyToOne(() => User, (user) => user.cards)
   user: User;

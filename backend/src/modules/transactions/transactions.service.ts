@@ -12,14 +12,11 @@ export class TransactionsService {
     @InjectRepository(Transaction)
     private readonly transactionsRepository: Repository<Transaction>,
   ) {}
-  async findLastTransactions(
-    userId: number,
-    limit: number = 5,
-  ): Promise<Transaction[]> {
+  async findLastTransactions(userId: number): Promise<Transaction[]> {
     return this.transactionsRepository.find({
-      where: { userId },
+      where: { userId: userId },
       order: { date: 'DESC' },
-      take: limit,
+      take: 5,
     });
   }
 

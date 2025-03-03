@@ -1,12 +1,20 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Req, UseGuards } from '@nestjs/common';
 import { CardsService } from './cards.service';
+import { AuthGuard } from 'src/guards/auth.guards';
 
 @Controller('paisabank/cards')
 export class CardsController {
   constructor(private readonly cardsService: CardsService) {}
 
   @Get()
-  async getCards() {
-    return await this.cardsService.getCards();
+  @UseGuards(AuthGuard)
+  async getCards(@Req() request) {
+    const userId = request.userId;
+    const cards = await this.cardsService.getCards(userId);
+
+    return {
+      success: true,
+      data: cards,
+    };
   }
 }

@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
-import { Cards } from './Cards.entity';
+import { Card } from './Cards.entity';
 import { Transaction } from './Transactions.entity';
 
 @Entity('users')
@@ -16,8 +16,8 @@ export class User {
   @Column({ length: 50 })
   password: string;
 
-  @OneToMany(() => Cards, (card) => card.user)
-  cards: Cards[];
+  @OneToMany(() => Card, (cards) => cards.user)
+  cards: Card[];
 
   @OneToMany(() => Transaction, (transaction) => transaction.user)
   transactions: Transaction[];

@@ -1,4 +1,4 @@
-import { Controller, Get, Query } from '@nestjs/common';
+import { Body, Controller, Get, Query } from '@nestjs/common';
 import { TransactionsService } from './transactions.service';
 import { GetUser } from 'src/decorators/user.decorator';
 
@@ -7,32 +7,28 @@ export class TransactionsController {
   constructor(private readonly transactionsService: TransactionsService) {}
 
   @Get('last')
-  async getLastMovements(@GetUser() user) {
+  async getLastMovements(@Query('userId') userId: number) {
     try {
-      const transactions = await this.transactionsService.findLastTransactions(
-        user.id,
-      );
+      const transactions =
+        await this.transactionsService.findLastTransactions(userId);
 
       return {
         success: true,
         data: transactions,
       };
     } catch (error) {
-      return {
-        success: false,
-        data: [],
-      };
+      throw error;
     }
   }
 
   @Get('all')
   async getAllMovements(
-    @GetUser() user,
+    @Body() userId: number,
     @Query('filter') transactionType?: string,
   ) {
     try {
       const transactions = await this.transactionsService.findAllTransactions(
-        user.id,
+        userId,
         transactionType,
       );
 
