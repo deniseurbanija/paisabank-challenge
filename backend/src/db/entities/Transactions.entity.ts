@@ -15,7 +15,7 @@ export class Transaction {
   @Column({ length: 100 })
   title: string;
 
-  @Column({ length: 8 })
+  @Column()
   amount: string;
 
   @Column({
@@ -24,7 +24,7 @@ export class Transaction {
   })
   transactionType: TransactionType;
 
-  @Column({ length: 8 })
+  @Column()
   date: string;
 
   @Column()
