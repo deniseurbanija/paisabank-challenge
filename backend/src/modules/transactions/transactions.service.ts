@@ -9,6 +9,7 @@ export class TransactionsService {
     @InjectRepository(Transaction)
     private readonly transactionsRepository: Repository<Transaction>,
   ) {
+    // Inicializar datos de ejemplo si no existen
     this.initializeTransactions();
   }
 
@@ -34,7 +35,7 @@ export class TransactionsService {
     );
     const queryBuilder = this.transactionsRepository
       .createQueryBuilder('transaction')
-      .where('transaction.userId = 1') //! DEBO OBTENER EL ID DEL USUARIO
+      .where('transaction.userId = 1')
       .orderBy('transaction.date', 'DESC');
 
     if (transactionType) {
@@ -49,7 +50,6 @@ export class TransactionsService {
   private async initializeTransactions() {
     const count = await this.transactionsRepository.count();
     if (count === 0) {
-      // Generar 20 transacciones de ejemplo variadas
       const transactions = [];
       const types = ['SUS', 'CASH_IN', 'CASH_OUT'];
       const titles = [
@@ -69,15 +69,13 @@ export class TransactionsService {
         const typeIndex = i % 3;
         const titleIndex = i % 10;
 
-        // Generar cantidades acordes al tipo de transacción
-        let amount;
+        let amount: string;
         if (types[typeIndex] === 'CASH_IN') {
           amount = (Math.random() * 1000 + 100).toFixed(2);
         } else {
           amount = (-1 * (Math.random() * 500 + 50)).toFixed(2);
         }
 
-        // Generar fecha en los últimos 30 días
         const date = new Date();
         date.setDate(date.getDate() - Math.floor(Math.random() * 30));
 

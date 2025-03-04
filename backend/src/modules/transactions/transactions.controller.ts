@@ -2,7 +2,7 @@ import { Controller, Get, Query, Req, UseGuards } from '@nestjs/common';
 import { TransactionsService } from './transactions.service';
 import { FilterTransactionsDto } from './dto/filter-transactions.dto';
 import { Request } from 'express';
-import { AuthGuard } from 'src/guards/auth.guards';
+import { AuthGuard } from 'src/common/guards/auth.guards';
 
 @Controller('paisabank/movements')
 export class TransactionsController {

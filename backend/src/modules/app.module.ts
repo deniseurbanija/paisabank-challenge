@@ -1,14 +1,12 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Card } from './db/entities/Cards.entity';
-import { User } from './db/entities/Users.entity';
-import { Transaction } from './db/entities/Transactions.entity';
-import { AuthModule } from './modules/auth/auth.module';
-import { CardsModule } from './modules/cards/cards.module';
-import { TransactionsModule } from './modules/transactions/transactions.module';
+import { Card } from 'src/db/entities/Cards.entity';
+import { User } from 'src/db/entities/Users.entity';
+import { Transaction } from 'src/db/entities/Transactions.entity';
+import { AuthModule } from './auth/auth.module';
+import { CardsModule } from './cards/cards.module';
+import { TransactionsModule } from './transactions/transactions.module';
 
 @Module({
   imports: [
@@ -34,7 +32,7 @@ import { TransactionsModule } from './modules/transactions/transactions.module';
     CardsModule,
     TransactionsModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {}

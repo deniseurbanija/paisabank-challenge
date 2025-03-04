@@ -20,7 +20,6 @@ export class CardsService {
   private async initializeCards() {
     const count = await this.cardsRepository.count();
     if (count === 0) {
-      // Crear tarjetas de ejemplo para el usuario 1
       await this.cardsRepository.save([
         {
           userId: 1,

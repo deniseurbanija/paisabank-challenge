@@ -1,6 +1,6 @@
 import { Controller, Get, Req, UseGuards } from '@nestjs/common';
 import { CardsService } from './cards.service';
-import { AuthGuard } from 'src/guards/auth.guards';
+import { AuthGuard } from 'src/common/guards/auth.guards';
 
 @Controller('paisabank/cards')
 export class CardsController {
