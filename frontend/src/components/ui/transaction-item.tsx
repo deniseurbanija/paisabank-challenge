@@ -1,12 +1,12 @@
 interface TransactionItemProps {
-  name: string;
+  title: string;
   type: string;
   amount: string;
   icon: string;
 }
 
 export function TransactionItem({
-  name,
+  title,
   type,
   amount,
   icon,
@@ -49,7 +49,7 @@ export function TransactionItem({
           {getIconContent(icon)}
         </div>
         <div>
-          <div className="text-black text-sm">{name}</div>
+          <div className="text-black text-sm">{title}</div>
           <div className="text-black/50 text-xs">{type}</div>
         </div>
       </div>

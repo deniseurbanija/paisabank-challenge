@@ -20,7 +20,6 @@ export default function HomePage() {
       try {
         setIsLoading(true);
 
-        // Get token from localStorage - check if it exists and is properly formatted
         let token = localStorage.getItem("token");
 
         // Verify if token exists and is properly formatted
@@ -59,7 +58,6 @@ export default function HomePage() {
 
         // Update state with the fetched data
         setTransactions(transactionsResponse.data.data);
-
         // Store all cards
         setCards(cardsResponse.data.data);
       } catch (err: any) {
@@ -138,7 +136,7 @@ export default function HomePage() {
                   {transactions.map((transaction) => (
                     <TransactionItem
                       key={transaction.id}
-                      name={transaction.title}
+                      title={transaction.title}
                       type={transaction.transactionType}
                       amount={transaction.amount}
                       icon={getIconForTransactionType(
