@@ -86,7 +86,7 @@ export default function MovimientosPage() {
   return (
     <div className="flex flex-col min-h-screen  max-w-md mx-auto">
       <header className="p-4">
-        <h1 className="text-xl text-black/80 m-4">Movimientos</h1>
+        <h1 className="text-xl text-black/80 font-medium m-4">Movimientos</h1>
 
         <div className="relative mb-4">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-black/40 w-4 h-4" />

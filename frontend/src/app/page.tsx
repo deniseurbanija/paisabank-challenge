@@ -67,14 +67,12 @@ export default function LoginPage() {
         </div>
       </div>
       {/* Button */}
-      <Link href="/home" className="w-full mt-8">
-        <button
-          onClick={handleSubmit}
-          className="w-full h-12 bg-[#0066FF] hover:bg-[#0052CC] text-white rounded-lg font-medium transition-colors"
-        >
-          Ingresar
-        </button>
-      </Link>
+      <button
+        onClick={handleSubmit}
+        className="w-full h-12 bg-[#0066FF] hover:bg-[#0052CC] text-white rounded-lg font-medium transition-colors"
+      >
+        Ingresar
+      </button>
     </div>
   );
 }

@@ -21,7 +21,7 @@ export const useLogin = () => {
       router.push("/home"); // Redirigir a home
     },
     onError: () => {
-      alert("User not found");
+      console.log("User not found");
     },
   });
 };

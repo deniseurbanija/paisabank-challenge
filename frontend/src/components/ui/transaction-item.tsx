@@ -14,8 +14,14 @@ export function TransactionItem({ title, type, amount }: TransactionItemProps) {
     CASH_IN: ArrowDown,
     CASH_OUT: ArrowUp,
   };
+  const COLORS_MAP = {
+    SUS: "#B946FF",
+    CASH_IN: "#74CC9B",
+    CASH_OUT: "#EF9C55",
+  };
 
   const Icon = ICONS_MAP[type as keyof typeof ICONS_MAP];
+  const color = COLORS_MAP[type as keyof typeof COLORS_MAP];
 
   return (
     <div className="bg-white rounded-xl shadow-xs p-4 flex items-center justify-between">
@@ -32,7 +38,9 @@ export function TransactionItem({ title, type, amount }: TransactionItemProps) {
           </div>
         </div>
       </div>
-      <div className="text-black text-sm font-medium">${amount}</div>
+      <div className="text-sm font-[400]" style={{ color: color }}>
+        ${amount}
+      </div>
     </div>
   );
 }

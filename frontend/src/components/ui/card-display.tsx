@@ -19,14 +19,18 @@ export function CardDisplay({
             <div className="text-white/80 text-xs">Balance</div>
             <div className="w-10 h-6 rounded-md bg-gradient-to-r from-orange-500 to-red-500"></div>
           </div>
+          <div className="flex items-center gap-2">
+            <div className="bg-[#89A5FB] rounded-lg text-white font-medium px-3 py-1 text-sm">
+              USD
+            </div>
+            <div className="text-white text-2xl font-bold">{balance}</div>
+          </div>
 
-          <div className="text-white text-2xl font-bold mt-1">${balance}</div>
-
-          <div className="mt-4 flex gap-2 items-center">
-            <div className="w-8 h-1 bg-white/40 rounded-full"></div>
-            <div className="w-8 h-1 bg-white/40 rounded-full"></div>
-            <div className="w-8 h-1 bg-white/40 rounded-full"></div>
-            <div className="text-white text-lg mt-1">{cardNumber}</div>
+          <div className="mt-4 flex text-white gap-2 items-center">
+            <div>****</div>
+            <div>****</div>
+            <div>****</div>
+            <div className=" text-lg mt-1">{cardNumber}</div>
           </div>
 
           <div className="flex justify-between items-end">
