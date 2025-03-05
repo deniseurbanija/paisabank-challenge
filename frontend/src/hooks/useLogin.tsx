@@ -2,6 +2,7 @@
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
 const login = async (loginForm: { email: string; password: string }) => {
   const response = await axios.post(
@@ -18,10 +19,10 @@ export const useLogin = () => {
     mutationFn: login,
     onSuccess: (data) => {
       localStorage.setItem("token", data.data.token);
-      router.push("/home"); // Redirigir a home
+      router.push("/home");
     },
-    onError: () => {
-      console.log("User not found");
+    onError: (error) => {
+      toast.error("Usuario no encontrado o credenciales inválidas");
     },
   });
 };

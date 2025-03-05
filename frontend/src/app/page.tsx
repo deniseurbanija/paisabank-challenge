@@ -3,6 +3,8 @@ import { useLogin } from "@/hooks/useLogin";
 import Link from "next/link";
 import { useState } from "react";
 import Icon from "/public/paisabank-icon.svg";
+import { Slide, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function LoginPage() {
   const [loginForm, setLoginForm] = useState({ email: "", password: "" });
@@ -19,6 +21,19 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-4 gap-44">
+      <ToastContainer
+        position="top-right"
+        autoClose={1001}
+        hideProgressBar
+        newestOnTop={false}
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        transition={Slide}
+      />
       <div className="space-y-8 w-full">
         <div className=" max-w-[400px] flex flex-col gap-4 items-center">
           <Icon className="mb-2" />
