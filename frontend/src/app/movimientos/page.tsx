@@ -166,7 +166,7 @@ export default function MovimientosPage() {
         </div>
       </header>
 
-      <div className="mb-6 space-y-3">
+      <div className="mb-20 space-y-3">
         {error ? (
           <div className="text-center py-4 text-red-500">
             Error: {error}. Por favor intenta de nuevo.
@@ -180,14 +180,13 @@ export default function MovimientosPage() {
               title={transaction.title}
               type={transaction.transactionType}
               amount={transaction.amount}
-              icon={getIconForTransactionType(transaction.transactionType)}
             />
           ))
         )}
       </div>
 
-      <div className="mt-auto">
-        <BottomNavigation active="movimientos" />
+      <div className="fixed bottom-0 left-0 right-0 z-50">
+        <BottomNavigation active="home" />
       </div>
     </div>
   );

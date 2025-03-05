@@ -70,11 +70,7 @@ export class TransactionsService {
         const titleIndex = i % 10;
 
         let amount: string;
-        if (types[typeIndex] === 'CASH_IN') {
-          amount = (Math.random() * 1000 + 100).toFixed(2);
-        } else {
-          amount = (-1 * (Math.random() * 500 + 50)).toFixed(2);
-        }
+        amount = (Math.random() * 1000 + 100).toFixed(2);
 
         const date = new Date();
         date.setDate(date.getDate() - Math.floor(Math.random() * 30));

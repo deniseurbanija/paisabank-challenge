@@ -1,5 +1,7 @@
 import Link from "next/link";
-import { Home, BarChart2, Send } from "lucide-react";
+import Logout from "/public/logout.svg";
+import Home from "/public/Home.svg";
+import Document from "/public/Document.svg";
 
 interface BottomNavigationProps {
   active: "home" | "movimientos" | "send";
@@ -24,7 +26,7 @@ export function BottomNavigation({ active }: BottomNavigationProps) {
             active === "movimientos" ? "text-blue-500" : "text-black/60"
           }`}
         >
-          <BarChart2 size={20} />
+          <Document size={20} />
         </div>
       </Link>
 
@@ -34,7 +36,7 @@ export function BottomNavigation({ active }: BottomNavigationProps) {
             active === "send" ? "text-blue-500" : "text-black/60"
           }`}
         >
-          <Send size={20} />
+          <Logout size={20} />
         </div>
       </Link>
     </div>

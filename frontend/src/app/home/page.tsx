@@ -7,6 +7,8 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Transaction, TransactionsResponse } from "@/types/Transaction";
 import { Card, CardsResponse } from "@/types/Card";
+import Notif from "/public/Notification.svg";
+import SearchIcon from "/public/Search.svg";
 
 export default function HomePage() {
   const router = useRouter();
@@ -98,8 +100,16 @@ export default function HomePage() {
   return (
     <div className="flex flex-col min-h-screen bg-white/5 max-w-md mx-auto">
       <div className="p-4">
-        <h2 className="text-black/80 text-sm mb-1">Hola</h2>
-        <h1 className="text-black text-xl font-semibold mb-4">Paisanx</h1>
+        <div className="m-4 flex justify-between">
+          <div className="flex flex-col">
+            <h2 className="text-black/80 text-sm mb-1">Hola</h2>
+            <h1 className="text-black text-xl font-semibold mb-2">Paisanx</h1>
+          </div>
+          <div className="flex flex-row gap-6 items-center">
+            <SearchIcon />
+            <Notif />
+          </div>
+        </div>
 
         {isLoading ? (
           <div className="animate-pulse">
@@ -110,7 +120,7 @@ export default function HomePage() {
         ) : (
           <>
             {cards && cards.length > 0 ? (
-              <div className="space-y-4">
+              <div className="flex overflow-x-auto space-x-4 pb-4 px-2">
                 {cards.map((card) => (
                   <CardDisplay
                     key={card.id}
@@ -128,20 +138,17 @@ export default function HomePage() {
             )}
 
             <div className="mt-6">
-              <h2 className="text-black/80 text-lg mb-4">
+              <h2 className="text-black/80 text-2xl font-medium mb-4">
                 Últimos movimientos
               </h2>
               {transactions && transactions.length > 0 ? (
-                <div className="space-y-3">
+                <div className="space-y-3 mb-16">
                   {transactions.map((transaction) => (
                     <TransactionItem
                       key={transaction.id}
                       title={transaction.title}
                       type={transaction.transactionType}
                       amount={transaction.amount}
-                      icon={getIconForTransactionType(
-                        transaction.transactionType
-                      )}
                     />
                   ))}
                 </div>
@@ -153,7 +160,7 @@ export default function HomePage() {
         )}
       </div>
 
-      <div className="mt-auto">
+      <div className="fixed bottom-0 left-0 right-0 z-50">
         <BottomNavigation active="home" />
       </div>
     </div>
