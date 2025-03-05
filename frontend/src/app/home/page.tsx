@@ -26,7 +26,6 @@ export default function HomePage() {
 
         // Verify if token exists and is properly formatted
         if (!token) {
-          console.error("No token found in localStorage");
           router.push("/login"); // Redirect to login if no token
           return;
         }
@@ -63,13 +62,8 @@ export default function HomePage() {
         // Store all cards
         setCards(cardsResponse.data.data);
       } catch (err: any) {
-        console.error("Error fetching data:", err);
-
         // Check if error is due to unauthorized access (401)
         if (err.response && err.response.status === 401) {
-          console.error(
-            "Unauthorized access. Token may be invalid or expired."
-          );
           localStorage.removeItem("token"); // Clear invalid token
           router.push("/login"); // Redirect to login
         }

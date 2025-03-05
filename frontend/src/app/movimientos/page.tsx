@@ -24,7 +24,6 @@ export default function MovimientosPage() {
 
       // Verify if token exists and is properly formatted
       if (!token) {
-        console.error("No token found in localStorage");
         router.push("/login"); // Redirect to login if no token
         return;
       }
@@ -54,11 +53,8 @@ export default function MovimientosPage() {
       // Update state with the fetched data
       setTransactions(response.data.data);
     } catch (err: any) {
-      console.error("Error fetching data:", err);
-
       // Check if error is due to unauthorized access (401)
       if (err.response && err.response.status === 401) {
-        console.error("Unauthorized access. Token may be invalid or expired.");
         localStorage.removeItem("token"); // Clear invalid token
         router.push("/login"); // Redirect to login
       }
@@ -74,90 +70,62 @@ export default function MovimientosPage() {
   }, []);
 
   const handleFilterChange = (filter: string) => {
+    setActiveFilter(filter);
     fetchData(filter);
   };
 
   const handleSearch = (e: any) => {
-    console.log("Search query:", searchQuery);
-    console.log("Original transactions:", transactions);
-    console.log("Filtered transactions:", filteredTransactions);
     setSearchQuery(e.target.value);
   };
 
   // Filter transactions based on search query
   const filteredTransactions = transactions.filter((transaction) => {
-    const amountString = transaction.amount.toString();
-    return (
-      transaction.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      amountString.includes(searchQuery)
-    );
+    return transaction.title.toLowerCase().includes(searchQuery.toLowerCase());
   });
-
-  // Mapeo de tipos de transacción a iconos
-  const getIconForTransactionType = (type: string) => {
-    switch (type) {
-      case "CASH_IN":
-        return "arrow-down";
-      case "CASH_OUT":
-        return "arrow-up";
-      case "SUS":
-        return "alert-circle";
-      default:
-        return "circle";
-    }
-  };
 
   return (
     <div className="flex flex-col min-h-screen  max-w-md mx-auto">
       <header className="p-4">
-        <h1 className="text-xl text-black/80 mb-4">Movimientos</h1>
+        <h1 className="text-xl text-black/80 m-4">Movimientos</h1>
 
         <div className="relative mb-4">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-black/40 w-4 h-4" />
           <Input
-            placeholder="Ingresa un monto o servicio"
+            placeholder="Ingresa un nombre o servicio"
             className="bg-white/10 border-black/10 text-black pl-10 placeholder:text-black/40"
             value={searchQuery}
             onChange={handleSearch}
           />
         </div>
 
-        <div className="flex gap-2 overflow-x-auto pb-2 -mx-1 ">
+        <div className="flex gap-2 overflow-x-auto pb-2 -mx-1">
           <button
-            className="px-4 py-2 bg-white rounded-full  text-sm whitespace-nowrap cursor-pointer ${
-              activeFilter === 'all' 
-                ? ' text-black' 
-                : ' text-black/60'
-            }`}"
+            className={`px-4 py-2 bg-white rounded-full text-sm whitespace-nowrap cursor-pointer ${
+              activeFilter === "all" ? "text-black" : "text-black/60"
+            }`}
             onClick={() => handleFilterChange("all")}
           >
             Todos
           </button>
           <button
-            className={`px-4 py-2 rounded-full text-sm whitespace-nowrap cursor-pointer ${
-              activeFilter === ""
-                ? "bg-white text-black"
-                : "bg-white text-black/60"
+            className={`px-4 py-2 bg-white rounded-full text-sm whitespace-nowrap cursor-pointer ${
+              activeFilter === "SUS" ? "text-black" : "text-black/60"
             }`}
             onClick={() => handleFilterChange("SUS")}
           >
-            Debito Aut.
+            Débito Aut.
           </button>
           <button
-            className={`px-4 py-2 rounded-full text-sm whitespace-nowrap cursor-pointer ${
-              activeFilter === "CASH_IN"
-                ? "bg-white text-black"
-                : "bg-white text-black/60"
+            className={`px-4 py-2 bg-white rounded-full text-sm whitespace-nowrap cursor-pointer ${
+              activeFilter === "CASH_IN" ? "text-black" : "text-black/60"
             }`}
             onClick={() => handleFilterChange("CASH_IN")}
           >
             Recibido
           </button>
           <button
-            className={`px-4 py-2 rounded-full text-sm whitespace-nowrap cursor-pointer ${
-              activeFilter === "CASH_OUT"
-                ? "bg-white text-black"
-                : "bg-white text-black/60"
+            className={`px-4 py-2 bg-white rounded-full text-sm whitespace-nowrap cursor-pointer ${
+              activeFilter === "CASH_OUT" ? "text-black" : "text-black/60"
             }`}
             onClick={() => handleFilterChange("CASH_OUT")}
           >
@@ -186,7 +154,7 @@ export default function MovimientosPage() {
       </div>
 
       <div className="fixed bottom-0 left-0 right-0 z-50">
-        <BottomNavigation active="home" />
+        <BottomNavigation active="movimientos" />
       </div>
     </div>
   );

@@ -10,12 +10,10 @@ export class TransactionsService {
     private readonly transactionsRepository: Repository<Transaction>,
   ) {
     // Inicializar datos de ejemplo si no existen
-    this.initializeTransactions();
+    // this.initializeTransactions();
   }
 
   async findLastTransactions(userId: number): Promise<Transaction[]> {
-    console.log(userId);
-
     return this.transactionsRepository.find({
       where: { userId: 1 },
       order: { date: 'DESC' },
@@ -27,12 +25,6 @@ export class TransactionsService {
     userId: number,
     transactionType?: string,
   ): Promise<Transaction[]> {
-    console.log(
-      'Buscando transacciones para usuario:',
-      userId,
-      'tipo:',
-      transactionType,
-    );
     const queryBuilder = this.transactionsRepository
       .createQueryBuilder('transaction')
       .where('transaction.userId = 1')
@@ -47,44 +39,44 @@ export class TransactionsService {
     return queryBuilder.getMany();
   }
 
-  private async initializeTransactions() {
-    const count = await this.transactionsRepository.count();
-    if (count === 0) {
-      const transactions = [];
-      const types = ['SUS', 'CASH_IN', 'CASH_OUT'];
-      const titles = [
-        'Pago de Alquiler',
-        'Transferencia recibida',
-        'Pago de Servicios',
-        'Salario',
-        'Compra Supermercado',
-        'Subscripción Netflix',
-        'Transferencia a Juan',
-        'Retiro de Cajero',
-        'Depósito',
-        'Pago Tarjeta Crédito',
-      ];
+  // private async initializeTransactions() {
+  //   const count = await this.transactionsRepository.count();
+  //   if (count === 0) {
+  //     const transactions = [];
+  //     const types = ['SUS', 'CASH_IN', 'CASH_OUT'];
+  //     const titles = [
+  //       'Pago de Alquiler',
+  //       'Transferencia recibida',
+  //       'Pago de Servicios',
+  //       'Salario',
+  //       'Compra Supermercado',
+  //       'Subscripción Netflix',
+  //       'Transferencia a Juan',
+  //       'Retiro de Cajero',
+  //       'Depósito',
+  //       'Pago Tarjeta Crédito',
+  //     ];
 
-      for (let i = 0; i < 20; i++) {
-        const typeIndex = i % 3;
-        const titleIndex = i % 10;
+  //     for (let i = 0; i < 20; i++) {
+  //       const typeIndex = i % 3;
+  //       const titleIndex = i % 10;
 
-        let amount: string;
-        amount = (Math.random() * 1000 + 100).toFixed(2);
+  //       let amount: string;
+  //       amount = (Math.random() * 1000 + 100).toFixed(2);
 
-        const date = new Date();
-        date.setDate(date.getDate() - Math.floor(Math.random() * 30));
+  //       const date = new Date();
+  //       date.setDate(date.getDate() - Math.floor(Math.random() * 30));
 
-        transactions.push({
-          userId: 1,
-          title: titles[titleIndex],
-          amount: amount,
-          transactionType: types[typeIndex],
-          date: date.toISOString(),
-        });
-      }
+  //       transactions.push({
+  //         userId: 1,
+  //         title: titles[titleIndex],
+  //         amount: amount,
+  //         transactionType: types[typeIndex],
+  //         date: date.toISOString(),
+  //       });
+  //     }
 
-      await this.transactionsRepository.save(transactions);
-    }
-  }
+  //     await this.transactionsRepository.save(transactions);
+  //   }
+  // }
 }
