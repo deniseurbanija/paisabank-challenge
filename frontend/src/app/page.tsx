@@ -24,7 +24,9 @@ export default function LoginPage() {
       <div className="space-y-8 w-full mt-24 md:mt-12">
         <div className="max-w-[400px] flex flex-col gap-4 items-center">
           <Icon className="mb-2" />
-          <h1 className="text-[#0066FF] text-4xl font-medium mb-1">PaisBank</h1>
+          <h1 className="text-[#0066FF] text-4xl font-medium mb-1">
+            PaisaBank
+          </h1>
           <p className="text-[#6B7280] text-sm mb-8">
             Comienza a manejar tu vida financiera
           </p>
