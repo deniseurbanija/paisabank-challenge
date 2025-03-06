@@ -78,7 +78,7 @@ export default function HomePage() {
   }, [router]);
 
   return (
-    <div className="flex flex-col min-h-screen bg-white/5 max-w-md mx-auto">
+    <div className="flex flex-col min-h-screen bg-white/5 max-w-md mx-auto md:w-[400px]">
       <div className="p-4">
         <div className="m-4 flex justify-between">
           <div className="flex flex-col">

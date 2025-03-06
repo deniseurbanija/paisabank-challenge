@@ -20,7 +20,7 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center p-4 gap-44">
+    <div className="min-h-screen flex flex-col items-center justify-center p-4 gap-44 md:w-[400px] md:mx-auto">
       <ToastContainer
         position="top-right"
         autoClose={1001}

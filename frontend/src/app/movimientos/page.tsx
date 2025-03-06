@@ -84,7 +84,7 @@ export default function MovimientosPage() {
   });
 
   return (
-    <div className="flex flex-col min-h-screen  max-w-md mx-auto">
+    <div className="flex flex-col min-h-screen max-w-md mx-auto md:w-[400px]">
       <header className="p-4">
         <h1 className="text-xl text-black/80 font-medium m-4">Movimientos</h1>
 

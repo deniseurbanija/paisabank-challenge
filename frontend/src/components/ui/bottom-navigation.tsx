@@ -11,7 +11,7 @@ interface BottomNavigationProps {
 
 export function BottomNavigation({ active }: BottomNavigationProps) {
   return (
-    <div className="flex justify-around items-center py-3 px-4 border-t border-white/10 bg-white">
+    <div className="flex justify-around items-center max-w-md py-3 px-4 border-t border-white/10 bg-white">
       <Link href="/home" className="flex flex-col items-center">
         {active === "home" ? <HomeActive /> : <Home />}
       </Link>
@@ -20,7 +20,7 @@ export function BottomNavigation({ active }: BottomNavigationProps) {
         {active === "movimientos" ? <DocumentActive /> : <Document />}
       </Link>
 
-      <Link href="#" className="flex flex-col items-center">
+      <Link href="/" className="flex flex-col items-center">
         <Logout />
       </Link>
     </div>
