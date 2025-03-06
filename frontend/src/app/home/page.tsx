@@ -77,20 +77,6 @@ export default function HomePage() {
     fetchData();
   }, [router]);
 
-  // Mapeo de tipos de transacción a iconos
-  const getIconForTransactionType = (type: string) => {
-    switch (type) {
-      case "CASH_IN":
-        return "arrow-down";
-      case "CASH_OUT":
-        return "arrow-up";
-      case "SUS":
-        return "alert-circle";
-      default:
-        return "circle";
-    }
-  };
-
   return (
     <div className="flex flex-col min-h-screen bg-white/5 max-w-md mx-auto">
       <div className="p-4">
