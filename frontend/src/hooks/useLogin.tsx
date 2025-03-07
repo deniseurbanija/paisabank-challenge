@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 
 const login = async (loginForm: { email: string; password: string }) => {
   const response = await axios.post(
-    "http://localhost:3000/paisabank/login",
+    `${process.env.NEXT_PUBLIC_API_URL}/paisabank/login`,
     loginForm
   );
   return response.data;

@@ -40,8 +40,8 @@ export default function MovimientosPage() {
       // Fetch both endpoints in parallel
       const endpoint =
         filter === "all"
-          ? "http://localhost:3000/paisabank/movements/all"
-          : `http://localhost:3000/paisabank/movements/all?filter=${filter}`;
+          ? `${process.env.NEXT_PUBLIC_API_URL}/paisabank/movements/all`
+          : `${process.env.NEXT_PUBLIC_API_URL}/paisabank/movements/all?filter=${filter}`;
 
       const response = await axios.get(endpoint, { headers });
 

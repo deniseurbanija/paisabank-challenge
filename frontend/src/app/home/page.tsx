@@ -42,14 +42,17 @@ export default function HomePage() {
         // Fetch both endpoints in parallel
         const [transactionsResponse, cardsResponse] = await Promise.all([
           axios.get<TransactionsResponse>(
-            "http://localhost:3000/paisabank/movements/last",
+            `${process.env.NEXT_PUBLIC_API_URL}/paisabank/movements/last`,
             {
               headers,
             }
           ),
-          axios.get<CardsResponse>("http://localhost:3000/paisabank/cards", {
-            headers,
-          }),
+          axios.get<CardsResponse>(
+            `${process.env.NEXT_PUBLIC_API_URL}/paisabank/cards`,
+            {
+              headers,
+            }
+          ),
         ]);
 
         // Check if responses are successful
