@@ -1,9 +1,9 @@
 import Link from "next/link";
-import Logout from "/public/logout.svg";
-import Home from "/public/Home.svg";
-import HomeActive from "/public/HomeActive.svg";
-import Document from "/public/Document.svg";
-import DocumentActive from "/public/DocumentActive.svg";
+import Logout from "/logout.svg";
+import Home from "/Home.svg";
+import HomeActive from "/HomeActive.svg";
+import Document from "/Document.svg";
+import DocumentActive from "/DocumentActive.svg";
 
 interface BottomNavigationProps {
   active: "home" | "movimientos" | "send";
