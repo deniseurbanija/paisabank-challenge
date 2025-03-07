@@ -1,6 +1,6 @@
-import ArrowUp from "@/public/ArrowUp.svg";
-import ArrowDown from "@/public/ArrowDown.svg";
-import TwoArrows from "@/public/TwoArrows.svg";
+import ArrowUp from "/public/ArrowUp.svg";
+import ArrowDown from "/public/ArrowDown.svg";
+import TwoArrows from "/public/TwoArrows.svg";
 
 interface TransactionItemProps {
   title: string;
