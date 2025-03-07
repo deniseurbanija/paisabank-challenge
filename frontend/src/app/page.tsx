@@ -1,6 +1,5 @@
 "use client";
-import Link from "next/link";
-import Icon from "/paisabank-icon.svg";
+import Image from "next/image";
 import { Slide, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { LoginForm } from "@/components/LoginForm";
@@ -23,7 +22,13 @@ export default function LoginPage() {
       />
       <div className="space-y-8 w-full mt-24 md:mt-12">
         <div className="max-w-[400px] flex flex-col gap-4 items-center">
-          <Icon className="mb-2" />
+          <Image
+            src="/paisabank-icon.svg"
+            alt="PaisaBank Icon"
+            width={48}
+            height={48}
+            className="mb-2"
+          />
           <h1 className="text-[#0066FF] text-4xl font-medium mb-1">
             PaisaBank
           </h1>

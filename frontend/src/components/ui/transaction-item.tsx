@@ -1,6 +1,4 @@
-import ArrowUp from "/ArrowUp.svg";
-import ArrowDown from "/ArrowDown.svg";
-import TwoArrows from "/TwoArrows.svg";
+import Image from "next/image";
 
 interface TransactionItemProps {
   title: string;
@@ -10,9 +8,9 @@ interface TransactionItemProps {
 
 export function TransactionItem({ title, type, amount }: TransactionItemProps) {
   const ICONS_MAP = {
-    SUS: TwoArrows,
-    CASH_IN: ArrowDown,
-    CASH_OUT: ArrowUp,
+    SUS: "/TwoArrows.svg",
+    CASH_IN: "/ArrowDown.svg",
+    CASH_OUT: "/ArrowUp.svg",
   };
   const COLORS_MAP = {
     SUS: "#B946FF",
@@ -20,13 +18,13 @@ export function TransactionItem({ title, type, amount }: TransactionItemProps) {
     CASH_OUT: "#EF9C55",
   };
 
-  const Icon = ICONS_MAP[type as keyof typeof ICONS_MAP];
+  const iconSrc = ICONS_MAP[type as keyof typeof ICONS_MAP];
   const color = COLORS_MAP[type as keyof typeof COLORS_MAP];
 
   return (
     <div className="bg-white rounded-xl shadow-xs p-4 flex items-center justify-between">
       <div className="flex items-center mx-2">
-        <Icon />
+        <Image src={iconSrc} alt={type} width={24} height={24} />
         <div className="mx-4">
           <div className="text-[#616E7C] text-[16px] font-medium">{title}</div>
           <div className="text-black/50 text-xs">

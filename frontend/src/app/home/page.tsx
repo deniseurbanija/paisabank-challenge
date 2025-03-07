@@ -7,8 +7,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Transaction, TransactionsResponse } from "@/types/Transaction";
 import { Card, CardsResponse } from "@/types/Card";
-import Notif from "/Notification.svg";
-import SearchIcon from "/Search.svg";
+import Image from "next/image";
 
 export default function HomePage() {
   const router = useRouter();
@@ -89,8 +88,13 @@ export default function HomePage() {
             <h1 className="text-black text-xl font-semibold mb-2">Paisanx</h1>
           </div>
           <div className="flex flex-row gap-6 items-center">
-            <SearchIcon />
-            <Notif />
+            <Image src="/Search.svg" alt="Search" width={24} height={24} />
+            <Image
+              src="/Notification.svg"
+              alt="Notifications"
+              width={24}
+              height={24}
+            />
           </div>
         </div>
 
