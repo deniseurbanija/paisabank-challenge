@@ -10,36 +10,36 @@ export class CardsService {
     private cardsRepository: Repository<Card>,
   ) {
     // Inicializar datos de ejemplo si no existen
-    this.initializeCards();
+    // this.initializeCards();
   }
 
   async getCards(userId: number): Promise<Card[]> {
     return this.cardsRepository.find({ where: { userId } });
   }
 
-  private async initializeCards() {
-    const count = await this.cardsRepository.count();
-    if (count === 0) {
-      await this.cardsRepository.save([
-        {
-          userId: 1,
-          issuer: 'Mastercard',
-          name: 'Platinum',
-          expDate: '12/26',
-          lastDigits: 4567,
-          balance: '15000.00',
-          currency: 'USD',
-        },
-        {
-          userId: 1,
-          issuer: 'Visa',
-          name: 'Gold',
-          expDate: '06/25',
-          lastDigits: 8901,
-          balance: '8500.00',
-          currency: 'USD',
-        },
-      ]);
-    }
-  }
+  // private async initializeCards() {
+  //   const count = await this.cardsRepository.count();
+  //   if (count === 0) {
+  //     await this.cardsRepository.save([
+  //       {
+  //         userId: 1,
+  //         issuer: 'Mastercard',
+  //         name: 'Platinum',
+  //         expDate: '12/26',
+  //         lastDigits: 4567,
+  //         balance: '15000.00',
+  //         currency: 'USD',
+  //       },
+  //       {
+  //         userId: 1,
+  //         issuer: 'Visa',
+  //         name: 'Gold',
+  //         expDate: '06/25',
+  //         lastDigits: 8901,
+  //         balance: '8500.00',
+  //         currency: 'USD',
+  //       },
+  //     ]);
+  //   }
+  // }
 }
