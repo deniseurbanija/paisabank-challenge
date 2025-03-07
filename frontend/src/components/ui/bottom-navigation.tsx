@@ -29,7 +29,7 @@ export function BottomNavigation({ active }: BottomNavigationProps) {
       </Link>
 
       <Link href="/" className="flex flex-col items-center">
-        <Image src="/logout.svg" alt="Logout" width={24} height={24} />
+        <Image src="/Logout.svg" alt="Logout" width={24} height={24} />
       </Link>
     </div>
   );
