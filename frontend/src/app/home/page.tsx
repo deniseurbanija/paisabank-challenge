@@ -7,8 +7,8 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Transaction, TransactionsResponse } from "@/types/Transaction";
 import { Card, CardsResponse } from "@/types/Card";
-import Notif from "/public/Notification.svg";
-import SearchIcon from "/public/Search.svg";
+import Notif from "@/public/Notification.svg";
+import SearchIcon from "@/public/Search.svg";
 
 export default function HomePage() {
   const router = useRouter();

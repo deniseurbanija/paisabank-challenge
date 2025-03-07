@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import Icon from "/public/paisabank-icon.svg";
+import Icon from "@/public/paisabank-icon.svg";
 import { Slide, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { LoginForm } from "@/components/LoginForm";
