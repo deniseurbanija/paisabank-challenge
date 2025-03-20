@@ -18,11 +18,8 @@ Después de evaluar riesgos en la primera etapa, se procederá a construir la pl
 ### 🌐 Frontend
 - **Framework:** [Next.js](https://nextjs.org/) 
 - **Estilos:**
-  - [Tailwind CSS](https://tailwindcss.com/) (recomendado)
+  - [Tailwind CSS](https://tailwindcss.com/) 
   - [Shadcn](https://ui.shadcn.com/)
-  - Alternativamente: Styled Components o SCSS
-- **Fuentes:**
-  - [Poppins](https://fonts.google.com/specimen/Poppins)
 
 ### 🏗️ Backend
 - **Lenguaje:** Node.js
